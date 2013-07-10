@@ -2,7 +2,9 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1> Pragmatic Catalogue </h1>
+<h1> Pragmatic Catalogue 
+<p>Hello, you've accessed <%= @count %> time(s).</p>
+</h1>
 
 <% @products.each do |product| %>
   <div class="entry">
