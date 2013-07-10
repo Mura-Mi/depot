@@ -37,11 +37,11 @@ class ProductTest < ActiveSupport::TestCase
     bad = %w{ fred.doc fred.gif/more fred.gif.more }
 
     ok.each do |name|
-      assert new_product(name).valid?, "#{name} shouldn't be invalid.}"
+      assert new_product_with_image_url(name).valid?, "#{name} shouldn't be invalid.}"
     end
 
     bad.each do |name|
-      assert new_product(name).invalid?, "#{name} shouldn't be valid."
+      assert new_product_with_image_url(name).invalid?, "#{name} shouldn't be valid."
     end
   end
 
@@ -56,13 +56,35 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal I18n.translate('activerecord.errors.messages.taken'), product.errors[:title].join('; ');
   end
 
+  test "product title must have more than 10 characters" do
+    ok = %w{1234567890 GarnetCrowTheBest}
+    ng = %w{123456789 GacktBest}
+
+    ok.each do |name|
+      assert new_product_with_title(name).valid?, "#{name} is expected to be valid, but isn't actually."
+    end
+
+    ng.each do |name|
+      assert new_product_with_title(name).invalid?, "#{name} is expected to be invalid, but isn't actually."
+    end
+  end
+
   private 
-  def new_product(image_url) 
+  def new_product_with_image_url(image_url) 
     Product.new(
       title: "My Test Product",
       description: "yyy",
       price: 1,
       image_url: image_url
+    )
+  end
+  
+  def new_product_with_title(title)
+    Product.new(
+      title: title,
+      description: 'yyy',
+      price: 10,
+      image_url: 'image.jpg'
     )
   end
 

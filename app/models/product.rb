@@ -8,4 +8,5 @@ class Product < ActiveRecord::Base
       with: %r{\.(gif|jpg|png)$}i,
       message: 'must be either gif, jpeg or png image file.'
     }
+  validates :title, length: {minimum: 10} # too_short: 'No! It is TOO SHORT!!!!'
 end
