@@ -7,8 +7,10 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 Product.delete_all
+LineItem.delete_all
+Cart.delete_all
 
-Product.create([
+Product.create!([
 {
   title: 'iPad 4',
   description:
@@ -24,4 +26,3 @@ Product.create([
   price: 299.99
 }
 ])
-
