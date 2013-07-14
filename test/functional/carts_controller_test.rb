@@ -25,7 +25,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should show cart" do
-    get :show, id: @cart
+    get :show, id: @cart.id
     assert_response :success
   end
 
@@ -41,9 +41,9 @@ class CartsControllerTest < ActionController::TestCase
 
   test "should destroy cart" do
     assert_difference('Cart.count', -1) do
-      delete :destroy, id: @cart
+      delete :destroy, {id: @cart.to_param}, {cart_id: @cart.id}
     end
 
-    assert_redirected_to carts_path
+    assert_redirected_to store_path
   end
 end
