@@ -56,9 +56,9 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal I18n.translate('activerecord.errors.messages.taken'), product.errors[:title].join('; ');
   end
 
-  test "product title must have more than 10 characters" do
-    ok = %w{1234567890 GarnetCrowTheBest}
-    ng = %w{123456789 GacktBest}
+  test "product title must have more than 3 characters" do
+    ok = %w{123 Tak}
+    ng = %w{12 ym}
 
     ok.each do |name|
       assert new_product_with_title(name).valid?, "#{name} is expected to be valid, but isn't actually."
