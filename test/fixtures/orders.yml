@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Takuya Murakami
+  address: This is my text
+  email: mura.mi.nantoka@gmail.com
+  pay_type: CASH
+
+two:
+  name: My Sweet Honey
+  address: this is her address.
+  email: ymd@docomo.ne.jp
+  pay_type: MyString
